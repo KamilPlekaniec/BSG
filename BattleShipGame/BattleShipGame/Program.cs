@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleShipGame.Components;
+using System;
 
 namespace BattleShipGame
 {
@@ -6,7 +7,8 @@ namespace BattleShipGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Game game = new Game();
+            Console.ReadLine();
         }
     }
 }
