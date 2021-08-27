@@ -8,6 +8,7 @@ namespace BattleShipGame
         static void Main(string[] args)
         {
             Game game = new Game();
+            game.PlayToEnd();
             Console.ReadLine();
         }
     }

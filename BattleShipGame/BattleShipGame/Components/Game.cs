@@ -20,9 +20,6 @@ namespace BattleShipGame.Components
 
             Player1.PlaceShips();
             Player2.PlaceShips();
-
-            Player1.OutputBoards();
-            Player2.OutputBoards();
         }
 
         public void SingleRound()
@@ -40,6 +37,25 @@ namespace BattleShipGame.Components
             }
             Player1.OutputBoards();
             Thread.Sleep(1500);
+        }
+
+        public void PlayToEnd()
+        {
+            while (!Player1.HasLost && !Player2.HasLost)
+            {
+                SingleRound();
+            }
+
+            if (Player1.HasLost)
+            {
+                Console.WriteLine("\n" + Player2.Name + " wygrał grę!");
+                Player2.OutputBoards();
+            }
+            else if (Player2.HasLost)
+            {
+                Console.WriteLine("\n" + Player1.Name + " wygrał grę!");
+                Player2.OutputBoards();
+            }
         }
     }
 }
