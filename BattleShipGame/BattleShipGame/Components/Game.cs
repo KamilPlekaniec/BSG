@@ -12,6 +12,10 @@ namespace BattleShipGame.Components
         {
             Console.WriteLine("Wprowadź nazwę gracza: ");
             var player1Name = Console.ReadLine();
+            Console.Clear();
+
+            Player1 = new Player(player1Name);
+            Player2 = new Player("KomputerowyGracz");
         }
     }
 }
