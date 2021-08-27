@@ -207,5 +207,20 @@ namespace BattleShipGame.Components
             }
             return ShotResult.Hit;
         }
+
+        public void ProcessShotResult(Coordinates coordinates, ShotResult result)
+        {
+            var panel = ShotBoard.Fields.At(coordinates.Row, coordinates.Column);
+            switch (result)
+            {
+                case ShotResult.Hit:
+                    panel.FieldsType = FieldsType.Hit;
+                    break;
+
+                default:
+                    panel.FieldsType = FieldsType.Miss;
+                    break;
+            }
+        }
     }
 }
