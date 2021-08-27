@@ -86,5 +86,19 @@ namespace BattleShipGame.Components
                 }
             }
         }
+
+        public void OutputBoards()
+        {
+            Console.WriteLine("Tablica gracza: " + Name);
+            for (int row = 1; row <= 10; row++)
+            {
+                Console.Write("|");
+                for (int ownColumn = 1; ownColumn <= 10; ownColumn++)
+                {
+                    Console.Write(GameBoard.Fields.At(row, ownColumn).Status + "|");
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }

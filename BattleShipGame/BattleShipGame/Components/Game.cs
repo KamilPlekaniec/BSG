@@ -16,6 +16,12 @@ namespace BattleShipGame.Components
 
             Player1 = new Player(player1Name);
             Player2 = new Player("KomputerowyGracz");
+
+            Player1.PlaceShips();
+            Player2.PlaceShips();
+
+            Player1.OutputBoards();
+            Player2.OutputBoards();
         }
     }
 }
