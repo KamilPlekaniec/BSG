@@ -1,6 +1,8 @@
-﻿using BattleShipGame.Components.Ships;
+﻿using BattleShipGame.Components.Extensions;
+using BattleShipGame.Components.Ships;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BattleShipGame.Components.Boards
@@ -14,6 +16,14 @@ namespace BattleShipGame.Components.Boards
         {
             Coordinates = new Coordinates(row, column);
             FieldsType = FieldsType.Empty;
+        }
+
+        public string Status
+        {
+            get
+            {
+                return FieldsType.GetAttributeOfType<DescriptionAttribute>().Description;
+            }
         }
 
         public bool IsOccupied
