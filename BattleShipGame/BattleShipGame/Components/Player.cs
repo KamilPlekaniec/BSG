@@ -1,4 +1,5 @@
 ﻿using BattleShipGame.Components.Boards;
+using BattleShipGame.Components.Extensions;
 using BattleShipGame.Components.Ships;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,58 @@ namespace BattleShipGame.Components
                 new PatrolBoat()
             };
             GameBoard = new GameBoard();
+        }
+
+        public void PlaceShips()
+        {
+            Random rnd = new Random(Guid.NewGuid().GetHashCode());
+            foreach (var ship in Ships)
+            {
+                bool isOpen = true;
+                while (isOpen)
+                {
+                    var startColumn = rnd.Next(1, 11);
+                    var startRow = rnd.Next(1, 11);
+                    int endRow = startRow, endColumn = startColumn;
+                    var orientation = rnd.Next(1, 101) % 2;
+
+                    List<int> panelNumbers = new List<int>();
+                    if (orientation == 0)
+                    {
+                        for (int i = 1; i < ship.Width; i++)
+                        {
+                            endRow++;
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 1; i < ship.Width; i++)
+                        {
+                            endColumn++;
+                        }
+                    }
+
+                    if (endRow > 10 || endColumn > 10)
+                    {
+                        isOpen = true;
+                        continue;
+                    }
+
+                    var affectedPanels = GameBoard.Fields.Range(startRow, startColumn, endRow, endColumn);
+
+                    if (affectedPanels.Any(x => x.IsOccupied))
+                    {
+                        isOpen = true;
+                        continue;
+                    }
+
+                    foreach (var panel in affectedPanels)
+                    {
+                        panel.FieldsType = ship.FieldsType;
+                    }
+                    isOpen = false;
+                }
+            }
         }
     }
 }
