@@ -8,6 +8,11 @@ using System.Text;
 
 namespace BattleShipGame.Components
 {
+    public enum ShotResult
+    {
+        Hit,
+        Miss
+    }
     public class Player
     {
         public string Name { get; set; }
@@ -183,6 +188,24 @@ namespace BattleShipGame.Components
                 Console.WriteLine(Name + ": \"Strzelam na J" + coordinates.Column.ToString() + "\"");
             }
             return coordinates;
+        }
+
+        public ShotResult ProcessShot(Coordinates coordinates)
+        {
+            var panel = GameBoard.Fields.At(coordinates.Row, coordinates.Column);
+            if (!panel.IsOccupied)
+            {
+                Console.WriteLine(Name + ": \"Pudło!\"");
+                return ShotResult.Miss;
+            }
+            var ship = Ships.First(x => x.FieldsType == panel.FieldsType);
+            ship.Hits++;
+            Console.WriteLine(Name + ": \"Trafiony!\"");
+            if (ship.IsSunk)
+            {
+                Console.WriteLine(Name + ": \"Zatopiłeś mój " + ship.Name + "!\"");
+            }
+            return ShotResult.Hit;
         }
     }
 }
