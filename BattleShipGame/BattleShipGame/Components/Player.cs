@@ -120,5 +120,13 @@ namespace BattleShipGame.Components
             var panelID = rand.Next(availablePanels.Count);
             return availablePanels[panelID];
         }
+
+        private Coordinates SearchingShot()
+        {
+            Random rand = new Random(Guid.NewGuid().GetHashCode());
+            var hitOpponents = ShotBoard.GetHitOpponents();
+            var opponentID = rand.Next(hitOpponents.Count);
+            return hitOpponents[opponentID];
+        }
     }
 }
