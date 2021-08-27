@@ -12,6 +12,7 @@ namespace BattleShipGame.Components
     {
         public string Name { get; set; }
         public GameBoard GameBoard { get; set; }
+        public ShotBoard ShotBoard { get; set; }
         public List<Ship> Ships { get; set; }
         public bool HasLost
         {
@@ -33,6 +34,7 @@ namespace BattleShipGame.Components
                 new PatrolBoat()
             };
             GameBoard = new GameBoard();
+            ShotBoard = new ShotBoard();
         }
 
         public void PlaceShips()
@@ -96,6 +98,16 @@ namespace BattleShipGame.Components
                 for (int ownColumn = 1; ownColumn <= 10; ownColumn++)
                 {
                     Console.Write(GameBoard.Fields.At(row, ownColumn).Status + "|");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("Tablica strzałów gracza: " + Name);
+            for (int row = 1; row <= 10; row++)
+            {
+                Console.Write("|");
+                for (int firingColumn = 1; firingColumn <= 10; firingColumn++)
+                {
+                    Console.Write(ShotBoard.Fields.At(row, firingColumn).Status + "|");
                 }
                 Console.WriteLine();
             }
