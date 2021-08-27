@@ -19,5 +19,19 @@ namespace BattleShipGame.Components
                 return Ships.All(x => x.IsSunk);
             }
         }
+
+        public Player(string name)
+        {
+            Name = name;
+            Ships = new List<Ship>()
+            {
+                new Carrier(),
+                new Battleship(),
+                new Destroyer(),
+                new Submarine(),
+                new PatrolBoat()
+            };
+            GameBoard = new GameBoard();
+        }
     }
 }
