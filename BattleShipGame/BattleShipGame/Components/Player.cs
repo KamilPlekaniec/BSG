@@ -128,5 +128,61 @@ namespace BattleShipGame.Components
             var opponentID = rand.Next(hitOpponents.Count);
             return hitOpponents[opponentID];
         }
+
+        public Coordinates FireShot()
+        {
+            var hitOpponent = ShotBoard.GetHitOpponents();
+            Coordinates coordinates;
+
+            if (hitOpponent.Any())
+            {
+                coordinates = SearchingShot();
+            }
+            else
+            {
+                coordinates = RandomShot();
+            }
+            if (coordinates.Row == 1)
+            {
+                Console.WriteLine(Name + ": \"Strzelam na A" + coordinates.Column.ToString() + "\"");
+            }
+            if (coordinates.Row == 2)
+            {
+                Console.WriteLine(Name + ": \"Strzelam na B" + coordinates.Column.ToString() + "\"");
+            }
+            if (coordinates.Row == 3)
+            {
+                Console.WriteLine(Name + ": \"Strzelam na C" + coordinates.Column.ToString() + "\"");
+            }
+            if (coordinates.Row == 4)
+            {
+                Console.WriteLine(Name + ": \"Strzelam na D" + coordinates.Column.ToString() + "\"");
+            }
+            if (coordinates.Row == 5)
+            {
+                Console.WriteLine(Name + ": \"Strzelam na E" + coordinates.Column.ToString() + "\"");
+            }
+            if (coordinates.Row == 6)
+            {
+                Console.WriteLine(Name + ": \"Strzelam na F" + coordinates.Column.ToString() + "\"");
+            }
+            if (coordinates.Row == 7)
+            {
+                Console.WriteLine(Name + ": \"Strzelam na G" + coordinates.Column.ToString() + "\"");
+            }
+            if (coordinates.Row == 8)
+            {
+                Console.WriteLine(Name + ": \"Strzelam na H" + coordinates.Column.ToString() + "\"");
+            }
+            if (coordinates.Row == 9)
+            {
+                Console.WriteLine(Name + ": \"Strzelam na I" + coordinates.Column.ToString() + "\"");
+            }
+            if (coordinates.Row == 10)
+            {
+                Console.WriteLine(Name + ": \"Strzelam na J" + coordinates.Column.ToString() + "\"");
+            }
+            return coordinates;
+        }
     }
 }
