@@ -15,6 +15,7 @@ namespace BattleShipGame.Components
     }
     public class Player
     {
+        public const int BoardSize = 10;
         public string Name { get; set; }
         public GameBoard GameBoard { get; set; }
         public ShotBoard ShotBoard { get; set; }
@@ -71,7 +72,7 @@ namespace BattleShipGame.Components
                         }
                     }
 
-                    if (endRow > 10 || endColumn > 10)
+                    if (endRow > BoardSize || endColumn > BoardSize)
                     {
                         isOpen = true;
                         continue;
@@ -97,20 +98,20 @@ namespace BattleShipGame.Components
         public void OutputBoards()
         {
             Console.WriteLine($"Tablica gracza: {Name}");
-            for (int row = 1; row <= 10; row++)
+            for (int row = 1; row <= BoardSize; row++)
             {
                 Console.Write("|");
-                for (int ownColumn = 1; ownColumn <= 10; ownColumn++)
+                for (int ownColumn = 1; ownColumn <= BoardSize; ownColumn++)
                 {
                     Console.Write($"{GameBoard.Fields.At(row, ownColumn).Status} |");
                 }
                 Console.WriteLine();
             }
             Console.WriteLine($"Tablica strzałów gracza: {Name}");
-            for (int row = 1; row <= 10; row++)
+            for (int row = 1; row <= BoardSize; row++)
             {
                 Console.Write("|");
-                for (int firingColumn = 1; firingColumn <= 10; firingColumn++)
+                for (int firingColumn = 1; firingColumn <= BoardSize; firingColumn++)
                 {
                     Console.Write($"{ShotBoard.Fields.At(row, firingColumn).Status} |");
                 }
