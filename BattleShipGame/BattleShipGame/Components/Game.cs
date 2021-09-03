@@ -48,12 +48,12 @@ namespace BattleShipGame.Components
 
             if (Player1.HasLost)
             {
-                Console.WriteLine("\n" + Player2.Name + " wygrał grę!");
+                Console.WriteLine($"\n{Player2.Name} wygrał grę!");
                 Player2.OutputBoards();
             }
             else if (Player2.HasLost)
             {
-                Console.WriteLine("\n" + Player1.Name + " wygrał grę!");
+                Console.WriteLine($"\n{Player1.Name} wygrał grę!");
                 Player2.OutputBoards();
             }
         }

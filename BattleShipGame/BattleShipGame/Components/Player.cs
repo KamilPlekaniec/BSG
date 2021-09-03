@@ -96,23 +96,23 @@ namespace BattleShipGame.Components
 
         public void OutputBoards()
         {
-            Console.WriteLine("Tablica gracza: " + Name);
+            Console.WriteLine($"Tablica gracza: {Name}");
             for (int row = 1; row <= 10; row++)
             {
                 Console.Write("|");
                 for (int ownColumn = 1; ownColumn <= 10; ownColumn++)
                 {
-                    Console.Write(GameBoard.Fields.At(row, ownColumn).Status + "|");
+                    Console.Write($"{GameBoard.Fields.At(row, ownColumn).Status} |");
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("Tablica strzałów gracza: " + Name);
+            Console.WriteLine($"Tablica strzałów gracza: {Name}");
             for (int row = 1; row <= 10; row++)
             {
                 Console.Write("|");
                 for (int firingColumn = 1; firingColumn <= 10; firingColumn++)
                 {
-                    Console.Write(ShotBoard.Fields.At(row, firingColumn).Status + "|");
+                    Console.Write($"{ShotBoard.Fields.At(row, firingColumn).Status} |");
                 }
                 Console.WriteLine();
             }
@@ -149,43 +149,43 @@ namespace BattleShipGame.Components
             }
             if (coordinates.Row == 1)
             {
-                Console.WriteLine(Name + ": \"Strzelam na A" + coordinates.Column.ToString() + "\"");
+                Console.WriteLine($"{Name} : \"Strzelam na A{coordinates.Column.ToString()} \"");
             }
             if (coordinates.Row == 2)
             {
-                Console.WriteLine(Name + ": \"Strzelam na B" + coordinates.Column.ToString() + "\"");
+                Console.WriteLine($"{Name} : \"Strzelam na B{coordinates.Column.ToString()} \"");
             }
             if (coordinates.Row == 3)
             {
-                Console.WriteLine(Name + ": \"Strzelam na C" + coordinates.Column.ToString() + "\"");
+                Console.WriteLine($"{Name} : \"Strzelam na C{coordinates.Column.ToString()} \"");
             }
             if (coordinates.Row == 4)
             {
-                Console.WriteLine(Name + ": \"Strzelam na D" + coordinates.Column.ToString() + "\"");
+                Console.WriteLine($"{Name} : \"Strzelam na D{coordinates.Column.ToString()} \"");
             }
             if (coordinates.Row == 5)
             {
-                Console.WriteLine(Name + ": \"Strzelam na E" + coordinates.Column.ToString() + "\"");
+                Console.WriteLine($"{Name} : \"Strzelam na E{coordinates.Column.ToString()} \"");
             }
             if (coordinates.Row == 6)
             {
-                Console.WriteLine(Name + ": \"Strzelam na F" + coordinates.Column.ToString() + "\"");
+                Console.WriteLine($"{Name} : \"Strzelam na F{coordinates.Column.ToString()} \"");
             }
             if (coordinates.Row == 7)
             {
-                Console.WriteLine(Name + ": \"Strzelam na G" + coordinates.Column.ToString() + "\"");
+                Console.WriteLine($"{Name} : \"Strzelam na G{coordinates.Column.ToString()} \"");
             }
             if (coordinates.Row == 8)
             {
-                Console.WriteLine(Name + ": \"Strzelam na H" + coordinates.Column.ToString() + "\"");
+                Console.WriteLine($"{Name} : \"Strzelam na H{coordinates.Column.ToString()} \"");
             }
             if (coordinates.Row == 9)
             {
-                Console.WriteLine(Name + ": \"Strzelam na I" + coordinates.Column.ToString() + "\"");
+                Console.WriteLine($"{Name} : \"Strzelam na I{coordinates.Column.ToString()} \"");
             }
             if (coordinates.Row == 10)
             {
-                Console.WriteLine(Name + ": \"Strzelam na J" + coordinates.Column.ToString() + "\"");
+                Console.WriteLine($"{Name} : \"Strzelam na J{coordinates.Column.ToString()} \"");
             }
             return coordinates;
         }
@@ -195,15 +195,15 @@ namespace BattleShipGame.Components
             var panel = GameBoard.Fields.At(coordinates.Row, coordinates.Column);
             if (!panel.IsOccupied)
             {
-                Console.WriteLine(Name + ": \"Pudło!\"");
+                Console.WriteLine($"{Name} : \"Pudło!\"");
                 return ShotResult.Miss;
             }
             var ship = Ships.First(x => x.FieldsType == panel.FieldsType);
             ship.Hits++;
-            Console.WriteLine(Name + ": \"Trafiony!\"");
+            Console.WriteLine($"{Name} : \"Trafiony!\"");
             if (ship.IsSunk)
             {
-                Console.WriteLine(Name + ": \"Zatopiłeś mój " + ship.Name + "!\"");
+                Console.WriteLine($"{Name} : \"Zatopiłeś mój {ship.Name} !\"");
             }
             return ShotResult.Hit;
         }
